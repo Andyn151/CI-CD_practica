@@ -7,33 +7,21 @@ jobs:
     steps:
       - checkout
       
-      # Crear y activar entorno virtual
-      - run:
-          name: Crear entorno virtual
-          command: |
-            python -m venv venv
-            . venv/bin/activate
-
-      # Instalar dependencias desde requirements.txt
+      # Instalar dependencias desde requirements.txt directamente
       - run:
           name: Instalar dependencias
           command: |
-            . venv/bin/activate
             pip install -r requirements.txt
 
       # Ejecutar flake8 para linting
       - run:
           name: Ejecutar Linter
-          command: |
-            . venv/bin/activate
-            flake8 .
+          command: flake8 .
 
       # Ejecutar pruebas con cobertura
       - run:
           name: Ejecutar pruebas
-          command: |
-            . venv/bin/activate
-            pytest --cov-report xml:coverage.xml --cov=.
+          command: pytest --cov-report xml:coverage.xml --cov=.
 
       # Guardar resultados de pruebas
       - store_test_results:
@@ -46,9 +34,7 @@ jobs:
       # Escaneo de SonarCloud
       - run:
           name: Escanear con SonarCloud
-          command: |
-            . venv/bin/activate
-            sonar-scanner
+          command: sonar-scanner
 
 workflows:
   version: 2
