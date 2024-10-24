@@ -3,7 +3,7 @@ version: 2.1
 defaults: &defaults
   working_directory: ~/repo
   docker:
-    - image: cimg/python:3.8  # Imagen Docker con Python 3.8 preinstalado
+    - image: cimg/python:3.8  # Actualizamos la imagen a Python 3.8
 
 orbs:
   sonarcloud: sonarsource/sonarcloud@2.0.0
@@ -13,19 +13,19 @@ jobs:
     <<: *defaults  
     steps:
       - checkout
-
+      
       - restore_cache:
           keys:
-          - v1-dependencies-{{ checksum "requirements.txt" }}
-          # fallback to using the latest cache if no exact match is found
-          - v1-dependencies-
+            - v1-dependencies-{{ checksum "requirements.txt" }}
+            - v1-dependencies-
 
       - run:
-          name: Install dependencies
+          name: Install Python dependencies
           command: |
             python -m venv venv
             . venv/bin/activate
-            pip install --no-cache-dir -r requirements.txt
+            pip install --upgrade pip
+            pip install -r requirements.txt
 
       - run:
           name: Run lint
@@ -47,52 +47,15 @@ jobs:
           key: v1-dependencies-{{ checksum "requirements.txt" }}
 
       - store_test_results:
-          path: test-results.xml
-
-      - persist_to_workspace:
-          root: ~/repo
-          paths: .
-
-  deploy:
-    <<: *defaults
-    steps:
-      - attach_workspace:
-          at: ~/repo
-
-      - run:
-          name: Pack and build Docker image
-          command: |
-            docker build -t my-python-app .
-
-      - run:
-          name: Push Docker image to registry
-          command: |
-            docker login -u $DOCKER_USER -p $DOCKER_PASS
-            docker tag my-python-app my-docker-repo/my-python-app:latest
-            docker push my-docker-repo/my-python-app:latest
+          path: test-results
 
       - store_artifacts:
-          path: ~/repo/build
-          destination: build
-
-      - store_artifacts:
-          path: ~/repo/docs
-          destination: docs
+          path: coverage.xml
 
 workflows:
   test-deploy:
     jobs:
       - test:
           filters:
-            tags:
-              only: /^v.*/
             branches:
-              only: main
-      - deploy:
-          requires:
-            - test
-          filters:
-            tags:
-              only: /^v.*/
-            branches:
-              ignore: /.*/
+              only: main  # Puedes cambiar esto según sea necesario
