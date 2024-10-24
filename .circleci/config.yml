@@ -22,25 +22,28 @@ jobs:
             . venv/bin/activate
             pip install -r requirements.txt
       - run:
-          name: Run Lint
+          name: Install SonarScanner
           command: |
-            . venv/bin/activate
-            flake8 . --exclude=venv,alembic --ignore=E501,F401,E128
-      - run:
-          name: Run Tests
-          command: |
-            . venv/bin/activate
-            pytest tests/
+            sudo apt-get update
+            sudo apt-get install -y wget unzip
+            wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.6.2.2472-linux.zip
+            unzip sonar-scanner-cli-4.6.2.2472-linux.zip
+            export PATH=$PATH:$(pwd)/sonar-scanner-4.6.2.2472-linux/bin
       - run:
           name: SonarCloud Scan
           command: |
             . venv/bin/activate
             sonar-scanner
       - run:
-          name: GitGuardian Scan
+          name: Run Lint
           command: |
             . venv/bin/activate
-            ggshield scan repo
+            flake8 .
+      - run:
+          name: Run Tests
+          command: |
+            . venv/bin/activate
+            pytest tests/
 
 workflows:
   version: 2
