@@ -1,52 +1,98 @@
 version: 2.1
 
-executors:
-  python-executor:
-    docker:
-      - image: circleci/openjdk:11.0.3-jdk-stretch  # Imagen con OpenJDK 11 y Python
-        environment:
-          JAVA_HOME: /usr/local/openjdk-11
-          PATH: /usr/local/openjdk-11/bin:$PATH
+defaults: &defaults
+  working_directory: ~/repo
+  docker:
+    - image: cimg/python:3.8  # Imagen Docker con Python 3.8 preinstalado
+
+orbs:
+  sonarcloud: sonarsource/sonarcloud@2.0.0
 
 jobs:
-  build:
-    executor: python-executor
+  test:
+    <<: *defaults  
     steps:
       - checkout
-      - setup_remote_docker
+
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "requirements.txt" }}
+          # fallback to using the latest cache if no exact match is found
+          - v1-dependencies-
+
       - run:
-          name: Create virtualenv and install dependencies
+          name: Install dependencies
           command: |
             python -m venv venv
             . venv/bin/activate
             pip install --no-cache-dir -r requirements.txt
+
       - run:
-          name: Install SonarScanner
-          command: |
-            sudo apt-get update
-            sudo apt-get install -y wget unzip
-            wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.6.2.2472-linux.zip
-            unzip sonar-scanner-cli-4.6.2.2472-linux.zip
-            sudo mv sonar-scanner-4.6.2.2472-linux /opt/sonar-scanner
-            sudo ln -s /opt/sonar-scanner/bin/sonar-scanner /usr/local/bin/sonar-scanner
-      - run:
-          name: SonarCloud Scan
-          command: |
-            . venv/bin/activate
-            sonar-scanner
-      - run:
-          name: Run Lint
+          name: Run lint
           command: |
             . venv/bin/activate
             flake8 .
+
       - run:
-          name: Run Tests
+          name: Run tests
           command: |
             . venv/bin/activate
-            pytest tests/
+            pytest --cov-report xml:coverage.xml --cov=.
+
+      - sonarcloud/scan
+
+      - save_cache:
+          paths:
+            - venv
+          key: v1-dependencies-{{ checksum "requirements.txt" }}
+
+      - store_test_results:
+          path: test-results.xml
+
+      - persist_to_workspace:
+          root: ~/repo
+          paths: .
+
+  deploy:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/repo
+
+      - run:
+          name: Pack and build Docker image
+          command: |
+            docker build -t my-python-app .
+
+      - run:
+          name: Push Docker image to registry
+          command: |
+            docker login -u $DOCKER_USER -p $DOCKER_PASS
+            docker tag my-python-app my-docker-repo/my-python-app:latest
+            docker push my-docker-repo/my-python-app:latest
+
+      - store_artifacts:
+          path: ~/repo/build
+          destination: build
+
+      - store_artifacts:
+          path: ~/repo/docs
+          destination: docs
 
 workflows:
-  version: 2
-  build-and-test:
+  test-deploy:
     jobs:
-      - build
+      - test:
+          filters:
+            tags:
+              only: /^v.*/
+            branches:
+              only: main
+      - deploy:
+          requires:
+            - test
+          filters:
+            tags:
+              only: /^v.*/
+            branches:
+              ignore: /.*/
