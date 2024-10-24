@@ -3,7 +3,7 @@ version: 2.1
 defaults: &defaults
   working_directory: ~/repo
   docker:
-    - image: cimg/python:3.10  
+    - image: cimg/python:3.10 
 
 orbs:
   sonarcloud: sonarsource/sonarcloud@2.0.0
@@ -39,10 +39,8 @@ jobs:
             . venv/bin/activate
             pytest --cov=backend --cov-report xml:coverage.xml
 
-      - sonarcloud/scan:
-          environment:
-            GITHUB_TOKEN: ${GITHUB_TOKEN}
-      
+      - sonarcloud/scan  # Sin el bloque `environment`
+
       - save_cache:
           paths:
             - venv
