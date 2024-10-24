@@ -3,10 +3,10 @@ version: 2.1
 executors:
   python-java-executor:
     docker:
-      - image: circleci/openjdk:17.0-jdk-buster  # Imagen con OpenJDK 17 y Python
+      - image: circleci/python:3.8  # Imagen con Python 3.8 preinstalado
         environment:
-          JAVA_HOME: /usr/local/openjdk-17
-          PATH: /usr/local/openjdk-17/bin:$PATH
+          JAVA_HOME: /usr/local/openjdk-11
+          PATH: /usr/local/openjdk-11/bin:$PATH
 
 jobs:
   build:
@@ -15,11 +15,20 @@ jobs:
       - checkout
       - setup_remote_docker
       - run:
-          name: Install Dependencies
+          name: Install Java 17
+          command: |
+            sudo apt-get update
+            sudo apt-get install -y openjdk-17-jdk
+            echo "JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64" >> $BASH_ENV
+            echo 'export PATH=$JAVA_HOME/bin:$PATH' >> $BASH_ENV
+            java -version  # Verifica que Java 17 esté instalado
+      - run:
+          name: Create virtualenv and install dependencies
           command: |
             python -m venv venv
             . venv/bin/activate
-            pip install --no-cache-dir -r requirements.txt
+            python -m pip install --upgrade pip
+            pip install -r requirements.txt
       - run:
           name: Install SonarScanner
           command: |
