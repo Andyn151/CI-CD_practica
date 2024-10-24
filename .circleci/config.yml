@@ -12,23 +12,35 @@ jobs:
       - checkout
       - setup_remote_docker
       - run:
+          name: Upgrade pip
+          command: |
+            python -m pip install --upgrade pip
+      - run:
           name: Install Dependencies
           command: |
             python -m venv venv
             . venv/bin/activate
-            pip install -r src/requirements.txt
+            pip install -r requirements.txt
       - run:
           name: Run Lint
-          command: flake8 src/
+          command: |
+            . venv/bin/activate
+            flake8 src/
       - run:
           name: Run Tests
-          command: pytest --cov=src/ tests/
+          command: |
+            . venv/bin/activate
+            pytest --cov=src/ tests/
       - run:
           name: SonarCloud Scan
-          command: sonar-scanner
+          command: |
+            . venv/bin/activate
+            sonar-scanner
       - run:
           name: GitGuardian Scan
-          command: ggshield scan repo
+          command: |
+            . venv/bin/activate
+            ggshield scan repo
 
 workflows:
   version: 2
