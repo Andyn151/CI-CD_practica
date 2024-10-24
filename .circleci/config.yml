@@ -22,13 +22,13 @@ jobs:
             . venv/bin/activate
             pip install -r requirements.txt
       - run:
-          name: Install OpenJDK 11
+          name: Install OpenJDK 17
           command: |
             sudo apt-get update
-            sudo apt-get install -y openjdk-11-jdk
-            echo "JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64" >> $BASH_ENV
+            sudo apt-get install -y openjdk-17-jdk
+            echo "JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64" >> $BASH_ENV
             echo 'export PATH=$JAVA_HOME/bin:$PATH' >> $BASH_ENV
-            java -version  # Verifica que Java 11 esté instalado
+            java -version  # Verifica que Java 17 esté instalado
       - run:
           name: Install SonarScanner
           command: |
