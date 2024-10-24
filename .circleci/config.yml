@@ -1,61 +1,57 @@
 version: 2.1
 
-defaults: &defaults
-  working_directory: ~/repo
-  docker:
-    - image: cimg/python:3.8  # Actualizamos la imagen a Python 3.8
-
-orbs:
-  sonarcloud: sonarsource/sonarcloud@2.0.0
-
 jobs:
   test:
-    <<: *defaults  
+    docker:
+      - image: cimg/python:3.9  # Usando Python 3.9
     steps:
       - checkout
       
-      - restore_cache:
-          keys:
-            - v1-dependencies-{{ checksum "requirements.txt" }}
-            - v1-dependencies-
-
+      # Crear y activar entorno virtual
       - run:
-          name: Install Python dependencies
+          name: Crear entorno virtual
           command: |
             python -m venv venv
             . venv/bin/activate
-            pip install --upgrade pip
+
+      # Instalar dependencias desde requirements.txt
+      - run:
+          name: Instalar dependencias
+          command: |
+            . venv/bin/activate
             pip install -r requirements.txt
 
+      # Ejecutar flake8 para linting
       - run:
-          name: Run lint
+          name: Ejecutar Linter
           command: |
             . venv/bin/activate
             flake8 .
 
+      # Ejecutar pruebas con cobertura
       - run:
-          name: Run tests
+          name: Ejecutar pruebas
           command: |
             . venv/bin/activate
             pytest --cov-report xml:coverage.xml --cov=.
 
-      - sonarcloud/scan
-
-      - save_cache:
-          paths:
-            - venv
-          key: v1-dependencies-{{ checksum "requirements.txt" }}
-
+      # Guardar resultados de pruebas
       - store_test_results:
-          path: test-results
+          path: test-results.xml
 
+      # Guardar cobertura de pruebas
       - store_artifacts:
           path: coverage.xml
+          
+      # Escaneo de SonarCloud
+      - run:
+          name: Escanear con SonarCloud
+          command: |
+            . venv/bin/activate
+            sonar-scanner
 
 workflows:
+  version: 2
   test-deploy:
     jobs:
-      - test:
-          filters:
-            branches:
-              only: main  # Puedes cambiar esto según sea necesario
+      - test
