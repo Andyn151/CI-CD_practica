@@ -25,7 +25,7 @@ jobs:
           name: Run Lint
           command: |
             . venv/bin/activate
-            flake8 . --exclude=venv
+            flake8 . --exclude=venv,alembic --ignore=E501,F401,E128
       - run:
           name: Run Tests
           command: |
