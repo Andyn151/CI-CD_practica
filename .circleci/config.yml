@@ -1,7 +1,7 @@
 version: 2.1
 
 orbs:
-  sonarcloud: sonarsource/sonarcloud@2.0.0  # Incluye el orb de SonarCloud
+  sonarcloud: sonarsource/sonarcloud@2.0.0  # Usa el orb de SonarCloud correctamente
 
 jobs:
   test:
@@ -43,11 +43,7 @@ jobs:
           command: |
             pip install --upgrade pip
             pip install -r requirements.txt
-      - sonarcloud/scan:
-          extra_args: |
-            -Dsonar.organization=$SONAR_ORG \
-            -Dsonar.projectKey=$SONAR_PROJECT_KEY \
-            -Dsonar.python.coverage.reportPaths=coverage.xml
+      - sonarcloud/scan  # Este comando se ejecuta correctamente sin extra_args
 
 workflows:
   test-deploy:
