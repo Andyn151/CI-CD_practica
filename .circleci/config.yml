@@ -1,62 +1,50 @@
 version: 2.1
 
-defaults: &defaults
-  working_directory: ~/repo
-  docker:
-    - image: cimg/python:3.9  # Ajuste a Python 3.9, puedes cambiar a 3.10 si es necesario
-
-orbs:
-  sonarcloud: sonarsource/sonarcloud@2.0.0
-
 jobs:
   test:
-    <<: *defaults
+    docker:
+      - image: cimg/python:3.9  # Usa una versión adecuada de Python
     steps:
-      - checkout
-
-      - restore_cache:
-          keys:
-            - v1-dependencies-{{ checksum "requirements.txt" }}
-            - v1-dependencies-
+      - checkout  # Obtener el código del repositorio
       
       - run:
-          name: Install dependencies
+          name: Instalar dependencias
           command: |
-            python -m venv venv
-            . venv/bin/activate
-            python -m pip install --upgrade pip
+            pip install --upgrade pip
             pip install -r requirements.txt
-      
+
       - run:
-          name: Run lint
+          name: Ejecutar pruebas
           command: |
-            . venv/bin/activate
-            flake8 . --exclude=venv --exit-zero  # El `--exit-zero` asegura que no falle por advertencias
-      
-      - run:
-          name: Run tests
-          command: |
-            . venv/bin/activate
             pytest --cov=backend --cov-report xml:coverage.xml
 
-      - sonarcloud/scan  # Sin el bloque `environment`
+      - run:
+          name: Ejecutar lint
+          command: flake8 .
 
-      - save_cache:
-          paths:
-            - venv
-          key: v1-dependencies-{{ checksum "requirements.txt" }}
-      
+      # Guardar resultados de pruebas
       - store_test_results:
-          path: test-results/
-
+          path: test-results
+          
+      # Guardar reporte de cobertura
       - store_artifacts:
           path: coverage.xml
+
+  sonarcloud_scan:
+    docker:
+      - image: cimg/python:3.9
+    steps:
+      - checkout
+      - run:
+          name: Instalar dependencias para SonarCloud
+          command: |
+            pip install --upgrade pip
+            pip install -r requirements.txt
+      - sonarcloud/scan
 
 workflows:
   test-deploy:
     jobs:
-      - test:
-          filters:
-            branches:
-              only: main
+      - test
+      - sonarcloud_scan
 
