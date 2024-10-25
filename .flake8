@@ -1,2 +1,2 @@
 [flake8]
-max-line-length = 300  # Ajusta el límite a algo razonable (por ejemplo, 100 caracteres)
+ignore = E501
