@@ -1,12 +1,15 @@
 version: 2.1
 
+orbs:
+  sonarcloud: sonarsource/sonarcloud@2.0.0  # Orb oficial de SonarCloud
+
 jobs:
   test:
     docker:
       - image: cimg/python:3.9  # Usa una versión adecuada de Python
     steps:
       - checkout  # Obtener el código del repositorio
-      
+
       - run:
           name: Instalar dependencias
           command: |
@@ -22,19 +25,14 @@ jobs:
           name: Ejecutar lint
           command: flake8 .
 
-      # Ejecutar SonarCloud Scan dentro del mismo flujo
-      - run:
-          name: Ejecutar SonarCloud Scan
-          command: |
-            sonar-scanner \
-            -Dsonar.projectKey=$SONAR_PROJECT_KEY \
-            -Dsonar.organization=$SONAR_ORG \
-            -Dsonar.host.url=https://sonarcloud.io \
-            -Dsonar.login=$SONAR_TOKEN
+      # Ejecutar SonarCloud scan usando la orb oficial
+      - sonarcloud/scan:
+          organization: $SONAR_ORG
+          projectKey: $SONAR_PROJECT_KEY
+          token: $SONAR_TOKEN
 
 workflows:
   version: 2
-  test:
+  test-workflow:
     jobs:
       - test
-
