@@ -1,5 +1,8 @@
 version: 2.1
 
+orbs:
+  sonarcloud: sonarsource/sonarcloud@2.0.0  # Incluye el orb de SonarCloud
+
 jobs:
   test:
     docker:
@@ -40,11 +43,16 @@ jobs:
           command: |
             pip install --upgrade pip
             pip install -r requirements.txt
-      - sonarcloud/scan
+      - sonarcloud/scan:
+          extra_args: |
+            -Dsonar.organization=$SONAR_ORG \
+            -Dsonar.projectKey=$SONAR_PROJECT_KEY \
+            -Dsonar.python.coverage.reportPaths=coverage.xml
 
 workflows:
   test-deploy:
     jobs:
       - test
       - sonarcloud_scan
+
 
