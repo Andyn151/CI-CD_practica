@@ -23,8 +23,8 @@ jobs:
       - store_test_results:
           path: test-results
       - store_artifacts:
-          path: coverage/coverage.xml
-      - sonarcloud/scan  # Eliminamos los argumentos
+          path: coverage.xml
+      - sonarcloud/scan
       - setup_remote_docker  # Necesario para la integración de Docker
       - run:
           name: Build Docker image
@@ -32,6 +32,23 @@ jobs:
       - run:
           name: Test Docker image
           command: docker run --rm mi-app:latest pytest
+
+  publish_docker_image:
+    docker:
+      - image: cimg/python:3.9
+    steps:
+      - setup_remote_docker
+      - checkout
+      - run:
+          name: Build Docker image
+          command: docker build -t andyn151/mi-app:latest .
+      - run:
+          name: Login to Docker Hub
+          command: |
+            echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
+      - run:
+          name: Push Docker image to Docker Hub
+          command: docker push andyn151/mi-app:latest
 
 workflows:
   version: 2.1
