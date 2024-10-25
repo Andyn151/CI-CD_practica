@@ -25,6 +25,13 @@ jobs:
       - store_artifacts:
           path: coverage.xml
       - sonarcloud/scan  # Aquí eliminamos los argumentos
+      - setup_remote_docker  # Necesario para la integración de Docker
+      - run:
+          name: Build Docker image
+          command: docker build -t mi-app:latest .
+      - run:
+          name: Test Docker image
+          command: docker run --rm mi-app:latest pytest
 
 workflows:
   test:
