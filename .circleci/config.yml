@@ -24,7 +24,7 @@ jobs:
           path: test-results
       - store_artifacts:
           path: coverage.xml
-      - sonarcloud/scan  # Aquí eliminamos los argumentos
+      - sonarcloud/scan  # Eliminamos los argumentos
       - setup_remote_docker  # Necesario para la integración de Docker
       - run:
           name: Build Docker image
@@ -34,7 +34,7 @@ jobs:
           command: docker run --rm mi-app:latest pytest
 
 workflows:
-  test:
+  version: 2.1
+  workflow_test:
     jobs:
       - test
-

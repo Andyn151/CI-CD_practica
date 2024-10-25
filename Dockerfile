@@ -1,20 +1,17 @@
-# Imagen base de Python
+# Usa una imagen base de Python 3.9
 FROM python:3.9-slim
 
-# Establecer el directorio de trabajo en /app
+# Establece el directorio de trabajo
 WORKDIR /app
 
-# Copiar los archivos requirements.txt en el contenedor
+# Copia los archivos necesarios
 COPY requirements.txt .
 
-# Instalar las dependencias
-RUN pip install --no-cache-dir -r requirements.txt
+# Instala las dependencias
+RUN pip install --upgrade pip && pip install -r requirements.txt
 
-# Copiar el código fuente de la aplicación
+# Copia el resto del código fuente
 COPY . .
 
-# Exponer el puerto que usará la aplicación
-EXPOSE 8000
-
-# Comando para ejecutar la aplicación
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
+# Define el comando para ejecutar los tests
+CMD ["pytest"]
