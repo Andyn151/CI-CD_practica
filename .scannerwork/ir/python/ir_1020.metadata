@@ -1,0 +1,4 @@
+fastapi.routing.APIRouter.on_event.decorator
+504e3e4c66ada0f7781329be3d427285
+==
+add_event_handler

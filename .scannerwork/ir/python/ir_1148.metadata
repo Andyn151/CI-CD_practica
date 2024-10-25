@@ -1,0 +1,12 @@
+fastapi.openapi.utils.get_openapi
+1c0eeb72d23e0baae261b2eab7f8e3e4
+fastapi.encoders.jsonable_encoder
+fastapi.openapi.utils.get_openapi_path
+fastapi._compat.get_compat_model_name_map
+set.__init__
+fastapi.openapi.utils.get_fields_from_routes
+list.__init__
+fastapi._compat.get_definitions
+==
+setdefault
+update

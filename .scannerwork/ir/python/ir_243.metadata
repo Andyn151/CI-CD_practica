@@ -1,0 +1,3 @@
+fastapi.dependencies.utils.get_typed_annotation
+2b2bcebab6e062c71cab9217dc0a7222
+typing.ForwardRef.__init__

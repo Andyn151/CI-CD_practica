@@ -1,0 +1,12 @@
+image04.run
+a9b9ae88745e9b5ab53dc2b01aa973db
+==
+goto
+new_context
+new_page
+get_by_role
+launch
+screenshot
+set_viewport_size
+click
+close

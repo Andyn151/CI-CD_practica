@@ -1,0 +1,6 @@
+fastapi._compat.field_annotation_is_sequence
+0e53e1a7825a56acc6cbb8e5f0206bd8
+typing_extensions.get_args
+fastapi._compat._annotation_is_sequence
+typing_extensions.get_origin
+fastapi._compat.field_annotation_is_sequence

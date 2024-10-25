@@ -1,0 +1,43 @@
+
+%EmailStr.__get_pydantic_json_schema__O
+E/Users/andreanavarro/desktop/CI-CD_practica/fastapi/openapi/models.py. .(("2*‡
+21 1(8
+1 1(8
+%1"dictè
+å
+1 1($
+%2"__mapSet*"
+
+__unknown_file (
+
+%1*$
+
+__unknown_file (
+type*&
+
+__unknown_file (
+
+stringê
+ç
+1& 1(7
+%3"__mapSet*"
+
+__unknown_file (
+
+%1*&
+
+__unknown_file (
+
+format*%
+
+__unknown_file (	
+email"
+1 1(8
+
+%1:
+/ /((
+core_schema:
+/* /(G	
+handlerB
+
+EmailStrH

@@ -1,0 +1,4 @@
+fastapi.dependencies.utils.is_gen_callable
+1f7a9dd7aafcd2a838491e88160f5b08
+inspect.isgeneratorfunction
+getattr

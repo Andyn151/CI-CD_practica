@@ -1,0 +1,13 @@
+image03.run
+40b89d5ee22dc0215dc8e6d595e49815
+==
+get_by_text
+goto
+new_context
+get_by_label
+new_page
+get_by_role
+launch
+screenshot
+click
+close

@@ -1,0 +1,12 @@
+fastapi.routing.serialize_response
+71b68b821bd663b225f5e96e9abd3459
+fastapi._compat._normalize_errors
+fastapi.encoders.jsonable_encoder
+hasattr
+fastapi.routing._prepare_response_content
+fastapi.exceptions.ResponseValidationError.__init__
+==
+extend
+serialize
+append
+validate

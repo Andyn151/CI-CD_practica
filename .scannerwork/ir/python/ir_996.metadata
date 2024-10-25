@@ -1,0 +1,13 @@
+fastapi.routing.APIWebSocketRoute.__init__
+14ac073c169e52d923c17b85f5e9cd62
+starlette.routing.compile_path
+fastapi.routing.get_websocket_app
+starlette.routing.websocket_session
+fastapi.dependencies.utils.get_flat_dependant
+fastapi.dependencies.utils.get_dependant
+fastapi.dependencies.utils.get_parameterless_sub_dependant
+starlette.routing.get_name
+list.__init__
+fastapi.dependencies.utils._should_embed_body_fields
+==
+insert

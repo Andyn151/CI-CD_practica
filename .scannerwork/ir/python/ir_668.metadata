@@ -1,0 +1,4 @@
+fastapi._compat._annotation_is_complex
+4f3bac0109c208666a4b22741600e912
+dataclasses.is_dataclass
+fastapi._compat._annotation_is_sequence

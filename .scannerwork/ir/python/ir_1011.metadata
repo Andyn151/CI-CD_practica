@@ -1,0 +1,13 @@
+fastapi.routing.APIRouter.include_router
+79b68fc643c94892c60566052c159ee0
+type.__init__
+fastapi.routing._merge_lifespan_context
+getattr
+list.__init__
+==
+extend
+add_api_route
+add_route
+add_event_handler
+add_websocket_route
+add_api_websocket_route

@@ -1,0 +1,4 @@
+fastapi._compat.is_bytes_or_nonable_bytes_annotation
+ee1651e6d74676e9eaac96b89515e53e
+typing_extensions.get_args
+typing_extensions.get_origin

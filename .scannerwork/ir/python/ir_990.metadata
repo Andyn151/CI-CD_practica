@@ -1,0 +1,7 @@
+fastapi.routing._prepare_response_content
+a7389c519fb2b90d92fbce45d4b73660
+dataclasses.is_dataclass
+dataclasses.asdict
+fastapi._compat._model_dump
+fastapi._compat._get_model_config
+getattr

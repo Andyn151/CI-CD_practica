@@ -1,0 +1,4 @@
+fastapi._compat.is_uploadfile_or_nonable_uploadfile_annotation
+273399f7605b64586c508cbe451837e7
+typing_extensions.get_args
+typing_extensions.get_origin

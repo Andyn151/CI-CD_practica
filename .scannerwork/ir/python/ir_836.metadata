@@ -1,0 +1,3 @@
+fastapi.applications.FastAPI.setup.swagger_ui_redirect
+1fcf74dd990b8dffa0ae92a6b6130e13
+fastapi.openapi.docs.get_swagger_ui_oauth2_redirect_html

@@ -1,0 +1,7 @@
+mkdocs_hooks.generate_renamed_section_items
+900d0ee0d9acb5b6730e15946f817181
+mkdocs_hooks.generate_renamed_section_items
+==
+read_source
+endswith
+append

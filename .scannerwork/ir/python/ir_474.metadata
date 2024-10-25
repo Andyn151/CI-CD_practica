@@ -1,0 +1,12 @@
+image02.run
+d36f1b4440d397568a2d286742ac6ffe
+==
+get_by_text
+goto
+new_context
+new_page
+get_by_role
+launch
+screenshot
+click
+close

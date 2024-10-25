@@ -1,0 +1,8 @@
+fastapi.openapi.utils.get_openapi_operation_metadata
+cf8b56f232d186a9de488fa8593472cd
+warnings.warn
+fastapi.openapi.utils.generate_operation_summary
+getattr
+==
+add
+get

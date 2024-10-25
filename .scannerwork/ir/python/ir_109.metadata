@@ -1,0 +1,6 @@
+fastapi.encoders.decimal_encoder
+eb82570349c0e07ad526379fc75ee08b
+float.__init__
+int.__init__
+==
+as_tuple

@@ -1,0 +1,58 @@
+
+4fastapi.applications.FastAPI.add_api_websocket_routeO
+C/Users/andreanavarro/desktop/CI-CD_practica/fastapi/applications.py—	 —	("2*‹
+2
+Ÿ	 ¤	(	d
+b
+
+Ÿ	 Ÿ	(
+%1"__id*H
+
+__unknown_file (,**
+fastapi.applications.FastAPI"
+routerŽ‹
+
+Ÿ	 ¤	(	
+%2*"
+
+__unknown_file (
+
+%1*$
+
+__unknown_file (
+
+path*(
+
+__unknown_file (
+
+
+endpoint2add_api_websocket_route:,
+name$
+
+__unknown_file (
+
+name:<
+dependencies,
+
+__unknown_file (
+
+dependencies*
+3*7
+3
+applications.py"
+¦	 ¦	(
+implicit return:
+
+™	 ™	(
+path:
+
+š	 š	($
+
+endpoint:
+
+›	 ›	("
+name:
+
+	 	(8
+dependenciesB 
+fastapi.applications.FastAPIH

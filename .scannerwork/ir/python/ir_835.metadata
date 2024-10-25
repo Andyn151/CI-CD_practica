@@ -1,0 +1,6 @@
+fastapi.applications.FastAPI.setup.swagger_ui_html
+bb4faca9d0fa857f0275cd2500df5b63
+fastapi.openapi.docs.get_swagger_ui_html
+==
+rstrip
+get

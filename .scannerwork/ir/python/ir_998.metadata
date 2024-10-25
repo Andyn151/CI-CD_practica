@@ -1,0 +1,3 @@
+fastapi.routing.APIRoute.get_route_handler
+449d8723c3eb7166aded4e679664780b
+fastapi.routing.get_request_handler

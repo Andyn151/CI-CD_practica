@@ -1,0 +1,4 @@
+fastapi._compat.is_pv1_scalar_sequence_field
+7397f108dc1a61515a3139f8a3d4e686
+fastapi._compat._annotation_is_sequence
+fastapi._compat.is_pv1_scalar_field

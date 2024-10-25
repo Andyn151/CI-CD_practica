@@ -1,0 +1,6 @@
+fastapi.applications.FastAPI.setup.redoc_html
+3a66f05d2b11d208eed529f5c9c12938
+fastapi.openapi.docs.get_redoc_html
+==
+rstrip
+get

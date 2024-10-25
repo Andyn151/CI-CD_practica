@@ -1,0 +1,9 @@
+mkdocs_hooks.resolve_file
+5f37a23911ade4763ce918574a08fef0
+mkdocs_hooks.EnFile.__init__
+pathlib.Path.__init__
+str.__init__
+==
+resolve
+is_file
+append

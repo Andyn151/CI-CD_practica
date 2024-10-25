@@ -1,0 +1,6 @@
+fastapi.dependencies.utils.is_coroutine_callable
+3e7528f0cf007eed9ffa35fcdaf838fc
+inspect.iscoroutinefunction
+inspect.isroutine
+getattr
+inspect.isclass

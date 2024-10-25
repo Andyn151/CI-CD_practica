@@ -1,0 +1,50 @@
+
+>fastapi.datastructures.UploadFile.__get_pydantic_json_schema__Q
+E/Users/andreanavarro/desktop/CI-CD_practica/fastapi/datastructures.py§ §($"2*Î
+2
+ß ß(5
+
+ß ß(5
+%1"dictë
+é
+
+ß ß( 
+%2"__mapSet*"
+
+__unknown_file (
+
+%1*$
+
+__unknown_file (
+type*&
+
+__unknown_file (
+
+stringì
+ê
+
+ß" ß(4
+%3"__mapSet*"
+
+__unknown_file (
+
+%1*&
+
+__unknown_file (
+
+format*&
+
+__unknown_file (
+
+binary"
+
+ß ß(5
+
+%1:
+
+• •($
+core_schema:
+
+•& •(C	
+handlerB%#
+!fastapi.datastructures.UploadFileH

@@ -1,0 +1,11 @@
+image01.run
+c2ec2be51b79ad0b11aa378fa6311373
+==
+goto
+new_context
+new_page
+get_by_role
+launch
+screenshot
+click
+close

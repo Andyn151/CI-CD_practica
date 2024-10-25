@@ -1,0 +1,10 @@
+fastapi.applications.FastAPI.__init__
+5ce7fb3dc94dc86a88ba70cc3245ca5b
+starlette.datastructures.State.__init__
+dict.__init__
+list.__init__
+==
+APIRouter
+setdefault
+warning
+setup

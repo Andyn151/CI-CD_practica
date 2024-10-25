@@ -1,0 +1,4 @@
+fastapi.openapi.utils.generate_operation_id
+25a8136e8da8c0d46da02410f208e626
+warnings.warn
+fastapi.utils.generate_operation_id_for_path

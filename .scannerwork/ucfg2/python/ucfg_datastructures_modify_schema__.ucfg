@@ -1,0 +1,59 @@
+
+3fastapi.datastructures.UploadFile.__modify_schema__Q
+E/Users/andreanavarro/desktop/CI-CD_practica/fastapi/datastructures.py† †("2* 
+2
+° °(G
+
+°  °(F
+%1"dictë
+é
+
+°! °(1
+%2"__mapSet*"
+
+__unknown_file (
+
+%1*$
+
+__unknown_file (
+type*&
+
+__unknown_file (
+
+stringì
+ê
+
+°3 °(E
+%3"__mapSet*"
+
+__unknown_file (
+
+%1*&
+
+__unknown_file (
+
+format*&
+
+__unknown_file (
+
+binarynl
+
+° °(G
+%4*,
+
+__unknown_file (
+
+field_schema*"
+
+__unknown_file (
+
+%12update*
+3*9
+3
+datastructures.py"
+£ £(
+implicit return:
+
+†# †(?
+field_schemaB%#
+!fastapi.datastructures.UploadFileH

@@ -1,0 +1,51 @@
+
+&fastapi._compat.ModelField.get_defaultH
+>/Users/andreanavarro/desktop/CI-CD_practica/fastapi/_compat.pyr r("2*∞
+2s s(,T
+R
+s s(
+%3"__id*:
+
+__unknown_file (*
+
+ModelField"
+
+field_infoCA
+s s(,
+%4*"
+
+__unknown_file (
+
+%32is_required*
+4
+5*˚
+4u u(IT
+R
+u u("
+%1"__id*:
+
+__unknown_file (*
+
+ModelField"
+
+field_infoÅ
+u u(I
+%2*"
+
+__unknown_file (
+
+%12get_default:<
+call_default_factory$
+
+__unknown_file (
+
+True"
+u u(I
+
+%2*(
+5t t( "
+t t( 
+
+	UndefinedB
+
+ModelFieldH

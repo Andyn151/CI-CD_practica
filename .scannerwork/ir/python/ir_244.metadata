@@ -1,0 +1,5 @@
+fastapi.dependencies.utils.get_typed_return_annotation
+b41acf439fa66458a61fc322e7f3d720
+fastapi.dependencies.utils.get_typed_annotation
+inspect.signature
+getattr

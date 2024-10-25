@@ -1,0 +1,92 @@
+
+$fastapi._compat.ModelField.serializeJ
+>/Users/andreanavarro/desktop/CI-CD_practica/fastapi/_compat.pyˆ ˆ("2*€
+2
+– Ÿ(Y
+W
+
+– –(%
+%1"__id*=
+
+__unknown_file (!*
+
+ModelField"
+_type_adapterýú
+
+– Ÿ(
+%2*"
+
+__unknown_file (
+
+%1*%
+
+__unknown_file (	
+
+value2dump_python:,
+mode$
+
+__unknown_file (
+
+mode:2
+include'
+
+__unknown_file (
+	
+include:2
+exclude'
+
+__unknown_file (
+	
+exclude:4
+by_alias(
+
+__unknown_file (
+
+
+by_alias:>
+exclude_unset-
+
+__unknown_file (
+
+exclude_unset:D
+exclude_defaults0
+
+__unknown_file (
+
+exclude_defaults:<
+exclude_none,
+
+__unknown_file (
+
+exclude_none"
+
+– Ÿ(
+
+%2:
+
+Š Š(
+value:
+
+Œ Œ(4
+mode:
+
+ (.	
+include:
+
+Ž Ž(.	
+exclude:
+
+ (!
+
+by_alias:
+
+ ('
+exclude_unset: 
+
+‘ ‘(*
+exclude_defaults:
+
+’ ’(&
+exclude_noneB
+
+ModelFieldH

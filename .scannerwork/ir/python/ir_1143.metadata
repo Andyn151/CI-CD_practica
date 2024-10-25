@@ -1,0 +1,5 @@
+fastapi.openapi.utils.get_openapi_operation_request_body
+e781b18a48332a4ff994ffb0b0ab7adb
+fastapi.encoders.jsonable_encoder
+fastapi._compat.get_schema_from_model_field
+typing.cast

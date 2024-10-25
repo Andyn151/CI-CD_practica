@@ -1,0 +1,12 @@
+image05.run
+b74c496cac30cf0f7ed984ffb9136e1b
+==
+goto
+new_context
+new_page
+get_by_role
+launch
+screenshot
+set_viewport_size
+click
+close

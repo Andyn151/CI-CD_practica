@@ -1,0 +1,11 @@
+image01.run
+fb0edcdd4fdbbfb4c78910b6430e0dbf
+==
+goto
+new_context
+get_by_label
+new_page
+launch
+screenshot
+click
+close

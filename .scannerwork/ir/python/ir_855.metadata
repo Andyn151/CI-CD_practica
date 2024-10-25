@@ -1,0 +1,4 @@
+fastapi.applications.FastAPI.websocket_route.decorator
+b9510ba572df9132de973e90bce83f4a
+==
+add_websocket_route

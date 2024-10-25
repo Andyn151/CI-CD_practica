@@ -1,0 +1,4 @@
+fastapi.dependencies.utils.is_async_gen_callable
+04817cd309aee218d59183cd0d60977e
+inspect.isasyncgenfunction
+getattr

@@ -1,0 +1,11 @@
+image02.run
+28b5a8b9bab4a91e9b9aec529e3e44a5
+==
+goto
+new_context
+get_by_label
+new_page
+launch
+screenshot
+click
+close

@@ -1,0 +1,7 @@
+organization=andyn151
+projectKey=Andyn151_CI-CD_practica
+serverUrl=https://sonarcloud.io
+serverVersion=8.0.0.57212
+dashboardUrl=https://sonarcloud.io/dashboard?id=Andyn151_CI-CD_practica
+ceTaskId=AZLDlSRE-eBoWnKuw-AV
+ceTaskUrl=https://sonarcloud.io/api/ce/task?id=AZLDlSRE-eBoWnKuw-AV
