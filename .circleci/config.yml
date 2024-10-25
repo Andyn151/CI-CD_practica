@@ -1,15 +1,12 @@
 version: 2.1
 
-orbs:
-  sonarcloud: sonarsource/sonarcloud@2.0.0  # Usa el orb de SonarCloud correctamente
-
 jobs:
   test:
     docker:
-      - image: cimg/python:3.9  # Usa una versión adecuada de Python
+      - image: cimg/python:3.9
     steps:
-      - checkout  # Obtener el código del repositorio
-      
+      - checkout
+
       - run:
           name: Instalar dependencias
           command: |
@@ -19,36 +16,35 @@ jobs:
       - run:
           name: Ejecutar pruebas
           command: |
-            pytest --cov=backend --cov-report xml:coverage.xml
+            pytest backend/tests --cov=backend --cov-report xml:coverage.xml
 
       - run:
-          name: Ejecutar lint
+          name: Ejecutar linting
           command: flake8 .
 
-      # Guardar resultados de pruebas
+      # Guardar los resultados de las pruebas
       - store_test_results:
           path: test-results
-          
-      # Guardar reporte de cobertura
+
+      # Guardar el reporte de cobertura
       - store_artifacts:
           path: coverage.xml
 
-  sonarcloud_scan:
-    docker:
-      - image: cimg/python:3.9
-    steps:
-      - checkout
+      # Ejecutar SonarCloud scan
       - run:
-          name: Instalar dependencias para SonarCloud
+          name: Ejecutar SonarCloud Scan
           command: |
-            pip install --upgrade pip
-            pip install -r requirements.txt
-      - sonarcloud/scan  # Este comando se ejecuta correctamente sin extra_args
+            sonar-scanner \
+              -Dsonar.projectKey=tu_organizacion_tu_proyecto \
+              -Dsonar.organization=tu_organizacion \
+              -Dsonar.host.url=https://sonarcloud.io \
+              -Dsonar.login=$SONAR_TOKEN \
+              -Dsonar.python.coverage.reportPaths=coverage.xml
 
 workflows:
-  test-deploy:
+  version: 2
+  test:
     jobs:
       - test
-      - sonarcloud_scan
 
 
