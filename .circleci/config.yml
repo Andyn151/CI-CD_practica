@@ -23,7 +23,7 @@ jobs:
       - store_test_results:
           path: test-results
       - store_artifacts:
-          path: coverage.xml
+          path: coverage/coverage.xml
       - sonarcloud/scan  # Eliminamos los argumentos
       - setup_remote_docker  # Necesario para la integración de Docker
       - run:
