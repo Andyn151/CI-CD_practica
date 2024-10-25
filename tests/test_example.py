@@ -1,4 +1,7 @@
-# tests/test_example.py
+# Imagina que tienes este código en un archivo app.py
+def suma(a, b):
+    return a + b
 
-def test_example():
-    assert 1 + 1 == 2
+# Ahora crea una prueba para esta función
+def test_suma():
+    assert suma(1, 2) == 3
