@@ -16,7 +16,7 @@ jobs:
             pip install -r requirements.txt
       - run:
           name: Ejecutar pruebas
-          command: pytest -- ncov=app --cov-report xml:coverage.xml
+          command: pytest -- ncov=backend --cov-report xml:coverage.xml
       - run:
           name: Ejecutar linting
           command: flake8 .
