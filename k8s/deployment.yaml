@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
       - name: fastapi
-        image: your-docker-repo/your-app:latest
+        image: docker.io/andyn151/ci-cd_practica:latest
         ports:
         - containerPort: 8000
