@@ -4,3 +4,6 @@ flake8>=3.9.2
 httpx>=0.21.0
 sphinx>=4.0.0
 sphinx_rtd_theme>=0.5.2
+fastapi==0.78.0
+uvicorn==0.17.6
+
