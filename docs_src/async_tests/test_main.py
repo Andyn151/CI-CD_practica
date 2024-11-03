@@ -1,5 +1,6 @@
 import pytest
-from httpx import ASGITransport, AsyncClient
+from  docs.main import app  # Usa la importación absoluta si es posible
+
 
 from ...docs.main import app
 
