@@ -7,8 +7,6 @@ jobs:
   test:
     docker:
       - image: cimg/python:3.9
-    environment:
-      PYTHONPATH: "${PYTHONPATH}:${PWD}/docs_src"  # Añadir PYTHONPATH para evitar errores de importación
     steps:
       - checkout
       - run:
