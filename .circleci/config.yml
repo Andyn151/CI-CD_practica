@@ -17,7 +17,7 @@ jobs:
             pip install --upgrade pytest-cov
       - run:
           name: Ejecutar pruebas
-          command: pytest --cov=docs_src --cov-report xml:coverage.xml --cov-context=test
+          command: pytest --cov=docs_src --cov-report xml:coverage.xml
       - run:
           name: Ejecutar linting
           command: flake8 .
